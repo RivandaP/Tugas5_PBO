@@ -4,6 +4,5 @@
 <p align="center"> X5F </p>
 
 
- <a align="center" href="src/main/java/com/pertemuan5/Main.java" title="Main" >Main.Java</a>
- <br>
- <a align="center" href="src/main/java/com/pertemuan5/Main.java" title="Pesan" >Pesan.Java</a>
+ <p align="center" href="src/main/java/com/pertemuan5/Main.java" title="Main" >Main.Java</p>
+ <p align="center" href="src/main/java/com/pertemuan5/Main.java" title="Pesan" >Pesan.Java</p>
