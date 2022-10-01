@@ -3,7 +3,7 @@
 <p align="center"> 202043500136 </p>
 <p align="center"> X5F </p>
 
-<center>
- <a href="src/main/java/com/pertemuan5/Main.java" title="Main" >Main.Java</a>
- <a href="src/main/java/com/pertemuan5/Main.java" title="Pesan" >Pesan.Java</a>
- </center>
+
+ <a align="center" href="src/main/java/com/pertemuan5/Main.java" title="Main" >Main.Java</a>
+ <br>
+ <a align="center" href="src/main/java/com/pertemuan5/Main.java" title="Pesan" >Pesan.Java</a>
