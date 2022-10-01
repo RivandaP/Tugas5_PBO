@@ -26,8 +26,9 @@ public class Main
         System.out.println( "" );
         System.out.println( " 1. Menu" );
         System.out.println( " 2. Pemesanan" );
-        System.out.println( " 3. Pembayaran" );
-        System.out.println( " 4. Keluar" );
+        System.out.println( " 3. Keranjang" );
+        System.out.println( " 4. Pembayaran" );
+        System.out.println( " 5. Keluar" );
         System.out.println( "" );
         System.out.println("=====================================================");
         System.out.print( " Pilihanmu: " );
@@ -40,12 +41,16 @@ public class Main
             ListPesanan = beli(ListPesanan);
 
         }
-        else if (pilih == 3){ //Menampilkan pemesanan dan Melakukan pembayaran
-            ListPesanan = bayar(ListPesanan);
+        else if (pilih == 3){ //Menampilkan pemesanan 
+            ListPesanan = keranjang(ListPesanan);
+        }
+        
+        else if (pilih == 4){ //Menampilkan pemesanan 
+            ListPesanan = pembayaran(ListPesanan);
         }
 
     }
-        while(pilih !=4);
+        while(pilih !=5);
     
     }
 
@@ -126,12 +131,12 @@ public class Main
         return ListPesanan;
     }
 
-    private static ArrayList<Pesan> bayar(ArrayList<Pesan> ListPesanan) {
+    private static ArrayList<Pesan> keranjang(ArrayList<Pesan> ListPesanan) {
         
         Scanner sc = new Scanner(System.in);
         System.out.println("");
         System.out.println("=====================================================");
-        System.out.println("            Rivanda Starlings Coffe                  ");
+        System.out.println("       Rivanda Starlings Coffe - List Pesanan        ");
         System.out.println("=====================================================");
         System.out.printf("| %-10s | %-5s | %-7s | %-7s | %-7s  |",
                "Nama",
@@ -153,12 +158,75 @@ public class Main
            System.out.println();
            System.out.println("=====================================================");
         }
-        System.out.println("Tekan Enter ...");
+        System.out.println("Tekan Enter untuk kembali...");
         sc.nextLine();
 
         return ListPesanan;
     }
 
+    private static ArrayList<Pesan> pembayaran(ArrayList<Pesan> ListPesanan) {
+        Integer TotalItem = 0;
+        Integer TotalHarga = 0;
+        Integer Bayar = 0;
+        Integer Kembalian = 0;
+        
+        Scanner sc = new Scanner(System.in);
+        System.out.println("");
+        System.out.println("=====================================================");
+        System.out.println("         Rivanda Starlings Coffe - Pembayaran        ");
+        System.out.println("=====================================================");
+        System.out.printf("| %-23s | %-22s  |",
+               "Total Item",
+               "Total Harga");
+        System.out.println();
+        System.out.println("-----------------------------------------------------");
+        
+        for(int index = 0; index < ListPesanan.size(); index++){
+
+             TotalItem += ListPesanan.get(index).getQty();
+             TotalHarga += ( ListPesanan.get(index).getHarga() * ListPesanan.get(index).getQty() ) ;
+            
+        }
+
+        System.out.printf("| %-23s | %-22s  |",
+                 TotalItem,
+                 TotalHarga
+                  );
+           System.out.println();
+           System.out.println("=====================================================");
+
+        System.out.print("Masukkan Nominal Pembayaran : Rp. ");
+        Bayar = sc.nextInt();
+        if(Bayar <= TotalHarga) {
+            do{
+                System.out.println("Mohon Maaf, Nominal yang anda masukkan kurang dari Rp. "+TotalHarga);
+                System.out.print("Masukkan Nominal Pembayaran : Rp. ");
+                Bayar = sc.nextInt();
+            }while (Bayar <= 0);
+        }
+
+
+       if (Bayar > TotalHarga) {
+        Kembalian = Bayar - TotalHarga;
+        System.out.println("Transaksi Berhasil, Kembalian anda sebesar : Rp. "+Kembalian);
+        ListPesanan.clear();
+        System.out.println("");
+        System.out.println("Tekan Enter untuk kembali...");
+        sc.nextLine();
+
+        return ListPesanan;
+       }
+       else { System.out.println("Transaksi Berhasil !!"); ListPesanan.clear();
+       System.out.println("");
+       System.out.println("Tekan Enter untuk kembali...");
+       sc.nextLine(); 
+       
+       return ListPesanan;}
+
+
+
+       
+    }
+
 
 }   
-
